@@ -27,13 +27,19 @@ jobs:
         java-version: '17'
 
     - name: Install dependencies
+      # This assumes your React Native project is at the root of the repository.
+      # If your project is in a subdirectory (e.g., 'my-app'), you'll need to add 'working-directory: ./my-app'
       run: yarn install
 
     - name: Grant execute permission to gradlew
+      # This step requires an 'android' folder at the root of your React Native project.
+      # If your project is in a subdirectory, adjust the 'working-directory' accordingly.
       run: chmod +x android/gradlew
       working-directory: ./android
 
     - name: Build Android Release APK
+      # This step requires an 'android' folder at the root of your React Native project.
+      # If your project is in a subdirectory, adjust the 'working-directory' accordingly.
       run: ./gradlew assembleRelease
       working-directory: ./android
 
